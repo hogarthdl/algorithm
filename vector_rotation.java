@@ -20,14 +20,11 @@ public class vector_rotation {
             reverse(c, 0, i-1);
             reverse(c, i, length-1);
             reverse(c, 0, length-1);
-//            for (int j = 0; j < length; j++) {
-//                System.out.println(c[j]);
-//            }
+            
             return String.valueOf(c);
         }
 
         public void reverse(char[] c, int first, int last){
-            int len = last - first;
             for (int j = 0; j < len/2; j++){
                 char tmp = c[first+j];
                 c[first+j] = c[last-j];
