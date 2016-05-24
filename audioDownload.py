@@ -1,5 +1,5 @@
 #coding=utf-8
-#Reading words from words.txt and downloading audio of those words from http://dict.youdao.com/dictvoice
+#Reading words from words.txt which contains single word in every line and downloading audio of those words from http://dict.youdao.com/dictvoice
 
 import urllib
 import urllib2
@@ -16,8 +16,10 @@ os.chdir('audio')
 while True:
 	line = f.readline()
 	if line:
-		word = line  #你要查的单词
-		cuntry = "2" #美式为2，英式为1
+		if line=='\n': #remove empty line
+			continue
+		word = line  #the word you gonna find
+		cuntry = "2" #2 means American English，1 means British English
 		params = {"audio":word, "type":cuntry}
 		data = urllib.urlencode(params)
 
@@ -25,7 +27,7 @@ while True:
 		response = urllib2.urlopen(request)
 
 		fs = open("%d.wav"%count, 'wb')
-		fs.write(response.read())  #response.read() 即是返回的音频流，你可以直接发给前台不用保存
+		fs.write(response.read())  #response.read() means return audio 
 		fs.close()
 		count = count + 1
 	else:
