@@ -1,5 +1,5 @@
 #coding=utf-8
-#Reading words from words.txt and downloading audio of words from http://dict.youdao.com/dictvoice
+#Reading words from words.txt and downloading audio of those words from http://dict.youdao.com/dictvoice
 
 import urllib
 import urllib2
@@ -25,7 +25,7 @@ while True:
 		response = urllib2.urlopen(request)
 
 		fs = open("%d.wav"%count, 'wb')
-		fs.write(response.read())#response.read() #即是返回的音频流，你可以直接发给前台不用保存
+		fs.write(response.read())  #response.read() 即是返回的音频流，你可以直接发给前台不用保存
 		fs.close()
 		count = count + 1
 	else:
