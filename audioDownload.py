@@ -16,18 +16,18 @@ os.chdir('audio')
 while True:
 	line = f.readline()
 	if line:
-		if line=='\n': #remove empty line
+		if line=='\n': #ignore empty line
 			continue
 		word = line  #the word you gonna find
-		cuntry = "2" #2 means American English，1 means British English
-		params = {"audio":word, "type":cuntry}
+		country = "2" #2 means American English，1 means British English
+		params = {"audio":word, "type":country}
 		data = urllib.urlencode(params)
 
 		request = urllib2.Request(url, data, headers)
 		response = urllib2.urlopen(request)
 		
-		#fs = open("%s.mp3"%word.strip(), 'wb') #if using word's name as file's name
-		fs = open("%d.wav"%count, 'wb')
+		fs = open("%s.mp3"%word.strip(), 'wb') #if using word's name as file's name
+		#fs = open("%d.wav"%count, 'wb')
 		fs.write(response.read())  #response.read() means return audio 
 		fs.close()
 		count = count + 1
