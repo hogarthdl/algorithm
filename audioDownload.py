@@ -26,8 +26,7 @@ while True:
 		request = urllib2.Request(url, data, headers)
 		response = urllib2.urlopen(request)
 		
-		fs = open("%s.mp3"%word.strip(), 'wb') #if using word's name as file's name
-		#fs = open("%d.wav"%count, 'wb')
+		fs = open("%d_%s.mp3"%(count,word.strip()), 'wb') #using counting number and word as file's name
 		fs.write(response.read())  #response.read() means return audio 
 		fs.close()
 		count = count + 1
